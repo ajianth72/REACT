@@ -1,5 +1,5 @@
-import Expense from "./Components/Expense";
-function App(){
+import Expense from "./Components/Expenses/Expense";
+const  App=()=>{
   const expenses=[
     {
       date :new Date(2021,1,15),
