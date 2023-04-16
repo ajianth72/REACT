@@ -1,4 +1,5 @@
 import Expense from "./Components/Expenses/Expense";
+import NewExpense from "./Components/NexExpense/NewExpense";
 import { useState } from "react";
 const  App=()=>{
   const [expenses,setExpenses]=useState([
@@ -38,6 +39,7 @@ const  App=()=>{
 
   return (
     <div>
+      <NewExpense/>
       {expenses.map(expense => (
         <Expense
           key={expense.id} // add a key prop to avoid a warning
