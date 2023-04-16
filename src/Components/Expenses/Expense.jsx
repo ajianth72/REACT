@@ -3,6 +3,10 @@ import ExpenseDate from './ExpenseDate';
 import ExpenseDetails from './ExpenseDetails';
 
 const Expense=(props)=> {
+
+  const deleteExpense=()=>{
+    props.onDeleteExpense(props.id);
+  }
   return (
     <div className='expense-item'>
       <ExpenseDate date={props.date}/>
@@ -11,6 +15,7 @@ const Expense=(props)=> {
         <div className='expense-item__price'>${props.amount}</div>
       </div>
       <ExpenseDetails LocationOfExpenditure={props.LocationOfExpenditure} />
+      <button onClick={deleteExpense} >Delete Expense</button>
     </div>
   );
 }
