@@ -36,10 +36,22 @@ const  App=()=>{
     const updatedExpenses = expenses.filter((expense) => expense.id !== expenseId);
     setExpenses(updatedExpenses);
   }
+  //const addExpenseHandler=expense=>{
+   // console.log('In App.js');
+   // console.log(expense);
+  //};
+
+  
+    const addExpenseHandler = (expense) => {
+      setExpenses((prevExpenses) => {
+        return [expense, ...prevExpenses];
+      });
+    };
+  
 
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       {expenses.map(expense => (
         <Expense
           key={expense.id} // add a key prop to avoid a warning
@@ -52,8 +64,12 @@ const  App=()=>{
         />
       ))}
     </div>
+    
   );
-}
 
-export default App;
+  }
+
+
+export default App;  
+
 
