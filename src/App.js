@@ -1,75 +1,51 @@
-import Expense from "./Components/Expenses/Expense";
-import NewExpense from "./Components/NexExpense/NewExpense";
-import { useState } from "react";
-const  App=()=>{
-  const [expenses,setExpenses]=useState([
-    {
-      date :new Date(2021,1,15),
-      title :"Toilet Paper",
-      amount :94.12,
-      LocationOfExpenditure: "Supermarket",
-      id:"el-1"
-    },
-    {
-      date :new Date(2021,4,21),
-      title : "New Tv",
-      amount :799.49,
-      LocationOfExpenditure: "Electronics Store",
-      id :"el-2"
-    },
-    {
-      date :new Date(2021,5,28),
-      title : "Car Insurance",
-      amount :294.97,
-      LocationOfExpenditure: "Insurance Company",
-      id:"el-3"
-    },
-    {
-      date :new Date(2022,2,28),
-      title : "New Desk",
-      amount :450.97,
-      LocationOfExpenditure: "Furniture Store",
-      id:"el-4"
-    },
-  ]);
-  const handleDeleteExpense = (expenseId) => {
-    const updatedExpenses = expenses.filter((expense) => expense.id !== expenseId);
-    setExpenses(updatedExpenses);
-  }
-  //const addExpenseHandler=expense=>{
-   // console.log('In App.js');
-   // console.log(expense);
-  //};
+import React from 'react';
 
-  
-    const addExpenseHandler = (expense) => {
-      setExpenses((prevExpenses) => {
-        return [expense, ...prevExpenses];
-      });
-    };
-  
+import NewExpense from './Components/NexExpense/NewExpense';
+import Expenses from './Components/Expenses/Expenses';
+
+const App = () => {
+  const expenses = [
+    {
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
+  ];
+
+  const addExpenseHandler = expense => {
+    console.log('In App.js');
+    console.log(expense);
+  };
+
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler}/>
-      {expenses.map(expense => (
-        <Expense
-          key={expense.id} // add a key prop to avoid a warning
-          id={expense.id}
-          date={expense.date}
-          title={expense.title}
-          amount={expense.amount}
-          LocationOfExpenditure={expense.LocationOfExpenditure}
-          onDeleteExpense={handleDeleteExpense}
-        />
-      ))}
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} />
     </div>
-    
   );
+}
 
-  }
-
-
-export default App;  
+export default App;
 
 
